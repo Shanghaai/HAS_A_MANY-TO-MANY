@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+ 
+<hibernate-mapping>
+  <class name="beans.Courses" table="course" schema="test">
+ 	<id name="cid"></id>
+	 <property name="cname"></property>
+ 	<property name="cfee"></property>
+ 
+ <!-- we need a third table to establish M-TO-M -->
+       <set name="faculties" table="FACULTYCOURSE">
+		<key column="cid"></key>
+		<many-to-many class="beans.Faculty" column="fid"></many-to-many>
+	   </set>
+ 
+  </class>
+</hibernate-mapping>
